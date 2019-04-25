@@ -13,9 +13,15 @@ import gql from "graphql-tag";
 import { Query, graphql } from "react-apollo";
 import { ListItem } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-/// @desc Try to query popular anime and stuff.
+
+// Helper files for time formatting.
 const prettyms = require("pretty-ms");
 const epochDate = Math.round(new Date().getTime() / 1000);
+
+/**
+ * @description
+ * create sql like query to get anime data and time
+ */
 const AnimeQuery = gql`
   query {
     Page(page: 1, perPage: 20) {
@@ -69,7 +75,7 @@ class AnimeList extends Component {
   };
 
   componentDidMount() {
-    // var date = new Date().getDate;
+    d;
   }
 
   renderTitle = ({ Page }, index) => {
@@ -87,13 +93,6 @@ class AnimeList extends Component {
     const { loading, error, Page } = data;
     const personIcon = <Icon name="account-heart" size={15} color="white" />;
     const starIcon = <Icon name="star" size={15} color="white" />;
-    // const { title } = Media;
-    // const { english } = title;
-    // const { airingSchedules } = Page;
-    // const airingSchedules = this.props.data.Page.airingSchedules;
-    // const { media } = airingSchedules;
-
-    // console.log(Page);
 
     if (loading) {
       return (
@@ -117,61 +116,10 @@ class AnimeList extends Component {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "#180E18"
-          // backgroundColor: "white"
         }}
       >
-        {/* {airingSchedules.map(anime => {
-          <Text>{anime.media.title.english}</Text>;
-        })} */}
-        {/* {Page.airingSchedules.map((key, val) => (
-          <Text>{key[val].episode}</Text>
-        ))} */}
-
-        {/* <View>
-          <Image
-            style={{
-              alignSelf: "stretch",
-
-              height: 200
-            }}
-            resizedMode="contain"
-            source={{
-              uri: Media.coverImage.medium
-            }}
-          />
-        </View> */}
-        {/* <Text
-          style={{
-            color: "red"
-          }}
-        >
-          new date: {this.state.date}
-        </Text> */}
         {Page.airingSchedules.map(anime => (
           <View key={anime.media.title.romaji}>
-            {/* <ListItem
-              containerStyle={{
-                padding: 20
-              }}
-              leftAvatar={{
-                source: {
-                  uri: anime.media.coverImage.medium
-                }
-              }}
-              title={anime.media.title.romaji}
-              titleStyle={{
-                color: "#414141"
-              }}
-              subtitle={"ep: " + anime.episode}
-              rightSubtitle={prettyms(anime.timeUntilAiring * 1000) + " left."}
-              rightSubtitleStyle={{
-                color: "#9DE8B4"
-              }}
-              onLongPress={() => {
-                Linking.openURL(anime.media.siteUrl);
-              }}
-            /> */}
-
             <TouchableOpacity
               onPress={() => {
                 Linking.openURL(anime.media.siteUrl);
