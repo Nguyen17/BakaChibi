@@ -1,12 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
 import React, { Component } from "react";
 import {
   Platform,
@@ -27,16 +18,7 @@ const client = new ApolloClient({
 
 /// Import Components here
 import HeaderThing from "./src/components/Header";
-import AlbumList from "./src/components/AlbumList";
 import AnimeList from "./src/components/AnimeList";
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
-
-// type Props = {};
 
 // @Method requestLocationPermission
 // @descr ask user for permission to access location
@@ -62,8 +44,10 @@ async function requestLocationPermission() {
     console.log(error);
   }
 }
+
 export default class App extends Component {
-  // Testing android adding permission
+  // Testing android location  permission
+  // request for location after every ui is rendered on the screen
   componentDidMount() {
     requestLocationPermission();
   }
@@ -77,10 +61,6 @@ export default class App extends Component {
           }}
         >
           <HeaderThing />
-          {/* <Text style={styles.welcome}> Welcome to React Native! </Text>
-                                <Text style={styles.instructions}> To get started, edit App.js </Text>
-                                <Text style={styles.instructions}>I LOVE ANIME</Text>
-                                <Text style={styles.instructions}> {instructions} </Text> */}
           <AnimeList />
         </View>
       </ApolloProvider>
@@ -89,12 +69,6 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: "flex-start",
-  //   alignItems: "center",
-  //   backgroundColor: "#F5FCFF"
-  // },
   root: {
     flex: 1
   },

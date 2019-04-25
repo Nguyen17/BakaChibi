@@ -4,44 +4,25 @@ import { Text, View, SafeAreaView } from "react-native";
 import { Header, Button, Icon, SearchBar } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-// Create the header component to be usable
-// Header component is able to accept props
-// const HeaderThing = props => {
-
-//   return (
-//     <View>
-//       {/* <Text style={styles.headerOneStyle}>Anime Chart</Text> */}
-//       <Header
-//         barStyle="dark-content"
-//         backgroundColor="black"
-//         leftComponent={{ icon: "menu", color: "#fff" }}
-//         centerComponent={{ text: "Anime Chart", style: { color: "#fff" } }}
-//         rightComponent={calendarIcon}
-//       />
-
-//       {/* <SearchBar
-//         containerStyle={{
-//           backgroundColor: "#fff",
-//           borderBottomWidth: 0
-//         }}
-//         inputStyle={{}}
-//         onChangeText={this.updateSearch}
-//         value={search}
-//       /> */}
-//     </View>
-//   );
-// };
-
+/**
+ * Headeer
+ * @description
+ * render the header component on the top of the app
+ *    - includes menu, search, and other things
+ */
 class HeaderThing extends Component {
   state = {
     search: ""
   };
 
+  // @description
+  // Takes user input and displays it in the searchbar
   updateSearch = search => {
     this.setState({ search });
   };
 
   render() {
+    const { search } = this.state;
     const calendarIcon = (
       <Icon
         name="calendar-blank"
@@ -50,10 +31,12 @@ class HeaderThing extends Component {
         onPress={() => {}}
       />
     );
-    const { search } = this.state;
+
     return (
       <View>
-        {/* <Text style={styles.headerOneStyle}>Anime Chart</Text> */}
+        {/* 
+          Uses premade Header component from react-native-element ui library
+        */}
         <Header
           barStyle="light-content"
           backgroundColor="black"
@@ -70,6 +53,8 @@ class HeaderThing extends Component {
           }}
           rightComponent={calendarIcon}
         />
+
+        {/* Render a search bar */}
         <SearchBar
           searchIcon={{
             color: "#fff"
@@ -103,7 +88,6 @@ const styles = {
   viewStyle: {
     paddingTop: 15,
     borderWidth: 0
-    // backgroundColor: "red"
   },
   headerOneStyle: {
     fontSize: 20.0,
