@@ -1,4 +1,4 @@
-package com.albums;
+package com.animechart;
 
 import android.app.Application;
 

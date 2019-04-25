@@ -13,7 +13,8 @@ import {
   StyleSheet,
   Text,
   View,
-  PermissionsAndroid
+  PermissionsAndroid,
+  SafeAreaView
 } from "react-native";
 
 /// Integration with Graphql and Appollo
@@ -27,7 +28,7 @@ const client = new ApolloClient({
 /// Import Components here
 import HeaderThing from "./src/components/Header";
 import AlbumList from "./src/components/AlbumList";
-// import AnimeList from "./src/components/AnimeList";
+import AnimeList from "./src/components/AnimeList";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
   android:
@@ -80,7 +81,7 @@ export default class App extends Component {
                                 <Text style={styles.instructions}> To get started, edit App.js </Text>
                                 <Text style={styles.instructions}>I LOVE ANIME</Text>
                                 <Text style={styles.instructions}> {instructions} </Text> */}
-          <AlbumList />
+          <AnimeList />
         </View>
       </ApolloProvider>
     );

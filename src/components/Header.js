@@ -1,6 +1,6 @@
 // Import libraries to use components
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 import { Header, Button, Icon, SearchBar } from "react-native-elements";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -55,16 +55,17 @@ class HeaderThing extends Component {
       <View>
         {/* <Text style={styles.headerOneStyle}>Anime Chart</Text> */}
         <Header
-          barStyle="dark-content"
+          barStyle="light-content"
           backgroundColor="black"
           leftComponent={{
             icon: "menu",
             color: "#fff"
           }}
           centerComponent={{
-            text: "Anime Chart",
+            text: "Saiikomo | Anime chart | Anime source",
             style: {
-              color: "#fff"
+              color: "#fff",
+              fontWeight: "bold"
             }
           }}
           rightComponent={calendarIcon}
@@ -74,18 +75,22 @@ class HeaderThing extends Component {
             color: "#fff"
           }}
           containerStyle={{
-            backgroundColor: "#fff",
+            backgroundColor: "#180E18",
+            // backgroundColor: "white",
             borderBottomWidth: 0
           }}
           inputContainerStyle={{
-            backgroundColor: "#e4e4e4"
+            // backgroundColor: "#e4e4e4"
+            backgroundColor: "#463e46"
           }}
           inputStyle={{
-            color: "#080808"
+            color: "#f1f1f1",
+            fontSize: 11
           }}
           onChangeText={this.updateSearch}
           value={search}
           onCancel={() => {}}
+          placeholder="search for an anime."
         />
       </View>
     );
